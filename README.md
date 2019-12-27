@@ -35,7 +35,14 @@ Supported targets are:
 To install a preview of the next version or help in testing:
 
         go get github.com/lucor/fyne-cross@develop
-
+## win10 wsl2下使用科学上网，镜像仍然被墙的解决办法
+   在wsl2里找到~/go/pkg/mod/github.com/nnhq（或lucor）/fyne-cross@v1.3.1$
+   sudo vim build.go 第332行附近：把"-t",下增加一行这个"--net=host"
+   极有可能你还需要改go.mod
+   解决了镜像被墙问题，又多出一个
+   go: writing go.sum: open /app/go.sum281664278.tmp: permission denied
+   exit status 1这样的问题，打算回到linux lite下跑fyne-cross算了
+  
 ## Usage
 
         fyne-cross --targets=linux/amd64,windows/amd64,darwin/amd64 package
